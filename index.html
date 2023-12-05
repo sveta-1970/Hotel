@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Програмна система "Готель клубного типу"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <a href="#" class="logo" title="logo">
+          <img
+            class="hotel_icon"
+            src="./src/images//hotel_icon.png"
+            alt="logo"
+          />
+        </a>
+        <div class="menu-item lang">
+          <small>UAH</small>
+          <img
+            class="lang_logo"
+            src="./src/images/UA_logo.png"
+            alt="lang_logo"
+          />
+        </div>
+        <i class="fa-solid fa-question" title="Потрібна допомога?"></i>
+        <form>
+          <label for="login"></label>
+          <input
+            type="email"
+            name="login"
+            placeholder="Введіть імейл"
+            id="login"
+            pattern=".+@example\.com"
+            size="30"
+            required
+          />
+          <label for="password"></label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Введіть пароль"
+            id="password"
+            minlength="8"
+            required
+          />
+          <button type="button" class="button">Увійти</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <section class="search">
+        <form class="search-form">
+          <div class="choice">
+            <label for="cities-choice" class="label">Місто</label>
+            <select name="cities-choice" id="cities-choice">
+              <option disabled selected>Виберіть місто</option>
+              <option value="Kyiv">Київ</option>
+              <option value="Lviv">Львів</option>
+              <option value="Odesa">Одеса</option>
+            </select>
+          </div>
+          <div class="choice">
+            <label for="quantity-person-choice" class="label">Кількість</label>
+            <select
+              list="quantity-person"
+              name="quantity-person-choice"
+              id="quantity-person-choice"
+            >
+              <option disabled selected>Виберіть кількість</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="choice">
+            <label for="dateIn-choice" class="label">Дата заїзду</label>
+            <input type="date" name="dateIn-choice" id="dateIn-choice" />
+          </div>
+          <div class="choice">
+            <label for="dateOut-choice" class="label">Дата виїзду</label>
+            <input type="date" name="dateOut-choice" id="dateOut-choice" />
+          </div>
+          <button
+            id="search-button"
+            class="search-button"
+            type="button"
+            title="search"
+          >
+            Пошук
+          </button>
+        </form>
+      </section>
+      <section class="searched-hotels">
+        <h1>Результати пошуку</h1>
+        <button type="button" class="button">Сортувати</button>
+        <div class="hotel-container" id="hotel-container"></div>
+      </section>
+      <section class="searched-nomer">
+        
+      </section>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/fab3d12f17.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./src/code/data.js"></script>
+    <script src="./src/code/index.js"></script>
+  </body>
+</html>

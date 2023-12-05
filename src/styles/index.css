@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* header */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hotel_icon {
+  width: 60px;
+}
+
+.lang {
+  gap: 30px;
+}
+
+.lang_logo {
+  width: 20px;
+  border-radius: 50px;
+}
+
+input,
+select {
+  border-radius: 4px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+}
+
+.button {
+  cursor: pointer;
+  color: rgb(84, 126, 243);
+  padding: 0 15px;
+  height: 30px;
+  align-self: flex-end;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: 3px solid rgb(84, 126, 243);
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: rgb(84, 126, 243);
+  color: white;
+}
+
+/* search section */
+
+.search-form {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(84, 126, 243);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  margin-bottom: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.search-button {
+  padding: 0 15px;
+  height: 30px;
+  align-self: flex-end;
+  background-color: rgb(84, 126, 243);
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: 3px solid white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: white;
+  color: rgb(84, 126, 243);
+}
+/* searched-hotels section */
+
+.searched-hotels {
+  margin: 30px;
+}
+
+.searched-hotel {
+  border: 3px solid rgb(84, 126, 243);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotel-description {
+  flex-grow: 4;
+  margin-right: 20px;
+  text-align: justify;
+}
+
+.hotel-name {
+  color: rgb(84, 126, 243);
+  margin-top: 0;
+}
+
+.hotel-rating {
+  color: #ffca00;
+  position: relative;
+  right: -10px;
+}
+
+.hotel-image {
+  flex-grow: 1;
+  text-align: right;
+  align-self: center;
+}
+
+.hotel-image > img {
+  width: 300px;
+  border-radius: 10px;
+}
