@@ -82,6 +82,7 @@ const refreshButtonsNomerCard = () => {
 //в функцію передаємо назву вибраного готеля та вибрану кільість гостей
 function ShowNomer(hotelName, number) {
   const modal = document.querySelector(".container-modal");
+  const modalWindow = document.querySelector(".modal-window");
   const modalClose = document.getElementById("modal-close");
   const modalBody = document.querySelector(".modal-body");
   modalBody.innerHTML = ""; //очищуємо тіло модального вікна перед додаванням картки номеру
@@ -92,17 +93,25 @@ function ShowNomer(hotelName, number) {
   const nomer = hotel.nomer.filter((el) =>
     el.quantityPerson.includes(number)
   )[0];
-  console.log(nomer);
+
+  //підрахунок розміщення модального вікна в залежності від положення скрола
+  const scrollTop = document.documentElement.scrollTop;
+  const windowMiddle = scrollTop + window.innerHeight / 3;
+  const modalWindowHeight = modalWindow.offsetHeight;
+  const modalTop = Math.max(windowMiddle - modalWindowHeight / 2, 0);
+  modal.style.top = `${modalTop}px`;
 
   modal.classList.remove("hide"); //щоб показати модальне вікно
+
+  console.log(nomer);
 
   //код, що потрібно вставити в тіло модального вікна
   const nomerCard = `
     <div class="modal-title">${hotelName}</div>
     <div class="nomer-image">
       <img
-        src="./src/images/nomer/${nomer.image}"
-        alt="${nomer.image}"
+        src="./src/images/nomer/${nomer.imageNomer}"
+        alt="${nomer.imageNomer}"
       />
     </div>
     <p class="nomer-description">${nomer.description}</p>
