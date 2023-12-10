@@ -31,13 +31,14 @@ function Search() {
       ) {
         findQuantity.forEach((hotel) => {
           selectedNomer = hotel;
+          console.log(hotel);
           const hotelCard = `
             <div class="searched-hotel">
               <div class="hotel-description">
                 <h2 class="hotel-name">${hotel.name}<span class="hotel-rating">${hotel.rating}</span></h2>
                 <h3>${hotel.city}</h3>
                 <p>${hotel.descrHotel}</p>
-                <button type="button" class="button nomer-card ${hotel.id}">Інформація про номер</button>
+                <button type="button" class="button nomer-card ${hotel.name}">Інформація про номер</button>
               </div>
               <div class="hotel-image">
                 <img
@@ -67,15 +68,52 @@ const refreshButtonsNomerCard = () => {
   Array.from(buttonsNomerCard).forEach((button) => {
     button.addEventListener("click", (e) => {
       //на цю кнопку натиснули, нам потрібно знати до якого готеля вона відноситься
-      //в назві класу кнопки є id готеля
-      //class="button nomer-card ${hotel.id}"
+      //в назві класу кнопки є name готеля
+      //class="button nomer-card ${hotel.name}"
       const className = e.target.className; //клас кнопки
-      const number = className.match(/\d+/)[0]; //виділяємо з класу число
-      ShowNomer(number);
+      const hotelName = className.match(/nomer-card\s(.+)/)[1]; //виділяємо з класу назву готеля, що стоїть після nomer-card та пробілу
+      const number = quantitySearch.value;
+      ShowNomer(hotelName, number);
     });
   });
 };
 
-function ShowNomer(number) {
-  console.log(number);
+//функція показує картку номера при натисканні на картці готелю кнопки "Інформація про номер"
+//в функцію передаємо назву вибраного готеля та вибрану кільість гостей
+function ShowNomer(hotelName, number) {
+  const modal = document.querySelector(".container-modal");
+  const modalClose = document.getElementById("modal-close");
+  const modalBody = document.querySelector(".modal-body");
+  modalBody.innerHTML = ""; //очищуємо тіло модального вікна перед додаванням картки номеру
+
+  //обєкт вибраного готелю
+  const hotel = data.filter((el) => el.name.includes(hotelName))[0];
+  //обєкт вибраного номеру
+  const nomer = hotel.nomer.filter((el) =>
+    el.quantityPerson.includes(number)
+  )[0];
+  console.log(nomer);
+
+  modal.classList.remove("hide"); //щоб показати модальне вікно
+
+  //код, що потрібно вставити в тіло модального вікна
+  const nomerCard = `
+    <div class="modal-title">${hotelName}</div>
+    <div class="nomer-image">
+      <img
+        src="./src/images/nomer/${nomer.image}"
+        alt="${nomer.image}"
+      />
+    </div>
+    <p class="nomer-description">${nomer.description}</p>
+    <p class="nomer-price">${nomer.price} грн.</p>
+    <button type="button" class="button" id="btn-book">Забронювати</button>
+    `;
+  //вставляємо картку номера в тіло модального вікна
+  modalBody.insertAdjacentHTML("beforeend", nomerCard);
+
+  //коли натискаємо на модальному вікні хрестик, модальне вікно зникає
+  modalClose.addEventListener("click", () => {
+    modal.classList.add("hide");
+  });
 }
